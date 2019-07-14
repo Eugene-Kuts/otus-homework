@@ -5,32 +5,50 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.otus</groupId>
-    <artifactId>HomeWork</artifactId>
+    <artifactId>OtusHomeWork</artifactId>
     <version>1.0</version>
-    <description>HomeWork01</description>
+    <description>OtusHomeWork</description>
 
     <developers>
         <developer>
             <name>Eugene-Kuts</name>
         </developer>
     </developers>
+
+    <modules>
+        <module>hw01-maven</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>28.0-jre</version>
+            <version>${com.google.guava.version}</version>
+            <!--<scope>system</scope>-->
+            <!--<systemPath>/tmp/kjhfskjhsdg.jar</systemPath>-->
+            <exclusions>
+                <!--exclusion>
+                    <groupId>org.checkerframework</groupId>
+                    <artifactId>checker-qual</artifactId>
+                </exclusion-->
+            </exclusions>
         </dependency>
     </dependencies>
 
     <properties>
+        <!--region General-->
+        <java.version>11</java.version>
+        <minimal.maven.version>3.3.9</minimal.maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--endregion-->
+
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+        <!--maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target-->
         <com.google.guava.version>28.0-jre</com.google.guava.version>
         <my.variable>42</my.variable>
     </properties>
-
-
 
     <dependencyManagement>
         <dependencies>
