@@ -43,9 +43,14 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--endregion-->
 
+        <!--region Plugins-->
+        <maven-compiler-plugin.version>3.1.1</maven-compiler-plugin.version>
+        <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <!--maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target-->
+        <!--endregion-->
         <com.google.guava.version>28.0-jre</com.google.guava.version>
         <my.variable>42</my.variable>
     </properties>
@@ -70,7 +75,16 @@
                     <artifactId>maven-assembly-plugin</artifactId>
                     <version>3.1.1</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
             </plugins>
+
         </pluginManagement>
     </build>
 
