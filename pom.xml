@@ -14,6 +14,11 @@
             <name>Eugene-Kuts</name>
         </developer>
     </developers>
+
+    <modules>
+        <module>hw01-maven</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -29,8 +34,6 @@
         <com.google.guava.version>28.0-jre</com.google.guava.version>
         <my.variable>42</my.variable>
     </properties>
-
-
 
     <dependencyManagement>
         <dependencies>
