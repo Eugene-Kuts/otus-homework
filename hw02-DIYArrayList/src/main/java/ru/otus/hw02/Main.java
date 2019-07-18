@@ -11,7 +11,7 @@ public class Main {
         System.out.println("_________________AddAll________________");
         try {
             //Create
-            List<String> myListToAddAll = new MyArrayList<>();
+            List<String> myListToAddAll = new DIYarrayList<>();
 
             //Fill
             for (char c='a';c<='z'; c++) {
@@ -42,8 +42,8 @@ public class Main {
         System.out.println("\n_________________COPY________________");
         try {
         //Create
-        List<Integer> sourceList = new MyArrayList<>();
-        List<Integer> destinationList = new MyArrayList<>();
+        List<Integer> sourceList = new DIYarrayList<>();
+        List<Integer> destinationList = new DIYarrayList<>();
 
         //Fill Lists
         for (int i = 1; i < 25; i++) {
@@ -77,7 +77,7 @@ public class Main {
 
         //Collection.sort
         System.out.println("\n_________________SORT________________");
-        List<Integer> listToSort = new MyArrayList<>();
+        List<Integer> listToSort = new DIYarrayList<>();
 
         // заполняем список из 30 элементов случайными числами
         for (int i = 0; i < 30; i++) {
