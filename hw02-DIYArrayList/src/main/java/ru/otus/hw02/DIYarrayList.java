@@ -3,13 +3,14 @@ package ru.otus.hw02;
 import java.util.*;
 import java.util.function.Consumer;
 
-
 public class DIYarrayList<E> implements List<E>{
 
     private int size;
     protected transient int modCount = 0;
     transient Object[] objectArray;
     private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = new Object[0];
+    private static final int MAX_INT = 2147483647;
+    private static final int MAX_ARRAY_SIZE = 2147483639;
 
     public DIYarrayList() {
         this.objectArray = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
@@ -32,17 +33,12 @@ public class DIYarrayList<E> implements List<E>{
 
     @Override
     public Iterator<E> iterator() {
-       // System.out.println("Iterator<E> iterator()");
         return new DIYarrayList.DIYItr();
-        //throw new UnsupportedOperationException("Iterator<E> iterator()");
     }
 
     @Override
     public Object[] toArray() {
-        //System.out.println("Object[] toArray()");
-
         return Arrays.copyOf(objectArray, size);
-        //throw new UnsupportedOperationException("Object[] toArray()");
     }
 
     @Override
@@ -56,48 +52,26 @@ public class DIYarrayList<E> implements List<E>{
         ++this.modCount;
 
         if (this.size == this.objectArray.length) {
-            //var2 = Arrays.copyOf(this.objectArray, (this.newCapacity((this.size + 1))));
             this.objectArray = Arrays.copyOf(this.objectArray, this.newCapacity((this.size + 1)));
         }
-        //System.out.println("objectArray.length= " + this.objectArray.length);
-       // System.out.println("this.size= " + this.size);
         this.objectArray[this.size] = e;
-        //this.size = this.size+1;
-
         ++this.size;
         return true;
-
-//        ++this.modCount;
-//        objectArray  = Arrays.copyOf(objectArray, objectArray.length + 1);
-//        objectArray[objectArray.length - 1] = e;
-//        ++this.size;
-//        return true;
-
-
-        //throw new UnsupportedOperationException("boolean add(E e)");
     }
 
     private int newCapacity(int var1) {
         int var2 = this.objectArray.length;
         int var3 = var2 + (var2 >> 1);
-       // System.out.println("var1= " + var1);
-       // System.out.println("var2= " + var2);
-       // System.out.println("(var2 >> 1) = " + (var2 >> 1));
-       // System.out.println("newCapacity var3= " + var3);
         if (var3 - var1 <= 0) {
             if (this.objectArray == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
-                //System.out.println("DEFAULTCAPACITY_EMPTY_ELEMENTDATA");
-               // System.out.println("Math.max(10, var1)= " + Math.max(10, var1));
                 return Math.max(1, var1);
             } else if (var1 < 0) {
                 throw new OutOfMemoryError();
             } else {
-                //System.out.println("else var1= " + var1);
                 return var1;
             }
         } else {
-            //System.out.println("var3 - 214748 <= 0 ? var3 : hugeCapacity(var1) = " + (var3 - 214748 <= 0 ? var3 : hugeCapacity(var1)));
-            return var3 - 214748 <= 0 ? var3 : hugeCapacity(var1);
+            return var3 - MAX_ARRAY_SIZE <= 0 ? var3 : hugeCapacity(var1);
         }
     }
 
@@ -105,7 +79,7 @@ public class DIYarrayList<E> implements List<E>{
         if (var < 0) {
             throw new OutOfMemoryError();
         } else {
-            return var > 2147483639 ? 2147483647 : 2147483639;
+            return var > MAX_ARRAY_SIZE ? MAX_INT : MAX_ARRAY_SIZE;
         }
     }
 
@@ -153,7 +127,6 @@ public class DIYarrayList<E> implements List<E>{
             throw new ConcurrentModificationException();
         }
         return (E) DIYarrayList.this.objectArray[index];
-        //throw new UnsupportedOperationException("E get(int i)");
     }
 
     @Override
@@ -161,7 +134,6 @@ public class DIYarrayList<E> implements List<E>{
         E old = get(index);
         objectArray[index] = element;
         return old;
-        //throw new UnsupportedOperationException("E set(int i, E e)");
     }
 
     @Override
@@ -186,13 +158,7 @@ public class DIYarrayList<E> implements List<E>{
 
     @Override
     public ListIterator<E> listIterator() {
-        //System.out.println("ListIterator<E> listIterator()");
-
-        //original
-        //return new ArrayList.ListItr(0);
-
         return new DIYarrayList.DIYListItr(0);
-        //throw new UnsupportedOperationException("ListIterator<E> listIterator()");
     }
 
     @Override
@@ -210,8 +176,6 @@ public class DIYarrayList<E> implements List<E>{
 
         DIYListItr(int iterator) {
             super();
-
-           // System.out.println("MyListItr(int iterator)");
             this.cursor = iterator;
         }
 
@@ -237,9 +201,6 @@ public class DIYarrayList<E> implements List<E>{
 
         @Override
         public void set(E e) {
-
-            //System.out.println("void set(E e) IN MyListItr");
-
             if (this.lastRet < 0) {
                 throw new IllegalStateException();
             } else {
@@ -252,7 +213,6 @@ public class DIYarrayList<E> implements List<E>{
                     throw new ConcurrentModificationException();
                 }
             }
-            //throw new UnsupportedOperationException("1");
         }
 
         @Override
@@ -268,26 +228,16 @@ public class DIYarrayList<E> implements List<E>{
         int expectedModCount;
 
         DIYItr() {
-
-           // System.out.println("MyItr()");
-
             this.expectedModCount = DIYarrayList.this.modCount;
         }
 
         @Override
         public boolean hasNext() {
-
-           // System.out.println("boolean hasNext()");
-
             return this.cursor != DIYarrayList.this.size;
-            //throw new UnsupportedOperationException("1");
         }
 
         @Override
         public E next() {
-
-            //System.out.println("next()");
-
             if (DIYarrayList.this.modCount != this.expectedModCount) {
                 throw new ConcurrentModificationException();
             }
@@ -296,8 +246,6 @@ public class DIYarrayList<E> implements List<E>{
                 throw new NoSuchElementException();
             } else {
                 Object[] var2 = DIYarrayList.this.objectArray;
-                //System.out.println(var1);
-                //System.out.println(var2.length);
                 if (var1 >= var2.length) {
                     throw new ConcurrentModificationException();
                 } else {
@@ -305,7 +253,6 @@ public class DIYarrayList<E> implements List<E>{
                     return (E)var2[this.lastRet = var1];
                 }
             }
-            //throw new UnsupportedOperationException("1");
         }
 
         @Override
