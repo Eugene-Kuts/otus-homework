@@ -18,6 +18,7 @@
     <modules>
         <module>hw01-maven</module>
         <module>hw02-DIYArrayList</module>
+        <module>hw03-TestFrameWork</module>
     </modules>
 
     <dependencies>
@@ -25,14 +26,18 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${com.google.guava.version}</version>
-            <!--<scope>system</scope>-->
-            <!--<systemPath>/tmp/kjhfskjhsdg.jar</systemPath>-->
             <exclusions>
                 <!--exclusion>
                     <groupId>org.checkerframework</groupId>
                     <artifactId>checker-qual</artifactId>
                 </exclusion-->
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -42,6 +47,12 @@
         <minimal.maven.version>3.3.9</minimal.maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--endregion-->
+
+        <!--region test libs-->
+        <!--jmh-core.version>1.21</jmh-core.version-->
+        <!--mockito-all.version>2.0.2-beta</mockito-all.version-->
+        <junit.jupiter.version>5.5.0</junit.jupiter.version>
         <!--endregion-->
 
         <!--region Plugins-->
@@ -62,6 +73,30 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${com.google.guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito-all.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
