@@ -38,9 +38,10 @@ public class TestRunner {
         for(Method m : testMethodsList){
             instance = createInstance(testClass);//для каждой тройки @Before @Test @After создаем свой instance
             tests++;
-            invokeMethod(before,instance);
-            invokeMethod(m,instance);
-            invokeMethod(after,instance);
+            if(invokeMethod(before,instance)){
+                invokeMethod(m,instance);
+                invokeMethod(after,instance);
+            }
         }
     }
 
@@ -62,18 +63,21 @@ public class TestRunner {
         return inst;
     }
 
-    private static void invokeMethod(Method m, Object ins){
+    private static boolean invokeMethod(Method m, Object ins){
+        boolean success = false;
         if(m!=null) {
             try {
                 m.invoke(ins);
                 if(m.isAnnotationPresent(Test.class)){
                     passed++;
                 }
+                success=true;
             } catch (Exception e) {
                 Throwable exception = e.getCause();
                 System.out.println("Invalid method: " + m.getName() + " with annotation: "+ m.getDeclaredAnnotations()[0] + ". Method failed because: " + exception);
             }
         }
+        return success;
     }
 
 }
