@@ -29,6 +29,7 @@ public class ClassTransformer implements ClassFileTransformer {
                 Log annotation = (Log) currentMethod.getAnnotation(Log.class);
                 if (annotation != null) {
                 //раз insertBefore, значит все должно быть в обратном порядке
+                    currentMethod.insertBefore("{ System.out.println(\"" +"\"); }");
                     currentMethod.insertBefore("{ System.out.print($1); }");
                     currentMethod.insertBefore("{System.out.print(\"" + ", param: " +"\");}");
                     currentMethod.insertBefore("{System.out.print(\"" + currentMethod.getName() + "\");}");
@@ -40,7 +41,6 @@ public class ClassTransformer implements ClassFileTransformer {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("ClassTransformer");
         return null;
     }
 }
