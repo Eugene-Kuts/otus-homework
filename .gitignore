@@ -34,7 +34,14 @@ target
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
- *.iml
- **/*.iml
-  **/**/*.iml
+*.iml
+**/*.iml
+**/**/*.iml
+/**/*.iml
+/otusHomeWork.iml
+/hw01-maven/HomeWork01.iml
+/hw02-DIYArrayList/HomeWork02.iml
+/hw03-TestFrameWork/hw03-TestFrameWork.iml
+/hw04-AutomaticLogging/hw04-AutomaticLogging.iml
 # *.ipr
+
