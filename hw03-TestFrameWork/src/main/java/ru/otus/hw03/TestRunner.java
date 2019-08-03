@@ -38,10 +38,11 @@ public class TestRunner {
         for(Method m : testMethodsList){
             instance = createInstance(testClass);//для каждой тройки @Before @Test @After создаем свой instance
             tests++;
-            if(invokeMethod(before,instance)){
-                invokeMethod(m,instance);
-                invokeMethod(after,instance);
+            if(invokeMethod(before,instance)) {
+                invokeMethod(m, instance);
             }
+            invokeMethod(after,instance);
+
         }
     }
 
