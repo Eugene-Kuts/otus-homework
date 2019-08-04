@@ -1,0 +1,12 @@
+GC Action:end of minor GC, Duration(mls):155, Cause:Allocation Failure, Elapsed time since start (mls):64750
+GC Action:end of minor GC, Duration(mls):193, Cause:Allocation Failure, Elapsed time since start (mls):134330
+GC Action:end of minor GC, Duration(mls):179, Cause:Allocation Failure, Elapsed time since start (mls):205201
+GC Action:end of minor GC, Duration(mls):0, Cause:Allocation Failure, Elapsed time since start (mls):276396
+GC Action:end of major GC, Duration(mls):505, Cause:Allocation Failure, Elapsed time since start (mls):276399
+GC Action:end of major GC, Duration(mls):564, Cause:Allocation Failure, Elapsed time since start (mls):351863
+GC Action:end of major GC, Duration(mls):578, Cause:Allocation Failure, Elapsed time since start (mls):377409
+GC Action:end of major GC, Duration(mls):658, Cause:Allocation Failure, Elapsed time since start (mls):386789
+GC Action:end of major GC, Duration(mls):573, Cause:Allocation Failure, Elapsed time since start (mls):390370
+GC Action:end of major GC, Duration(mls):568, Cause:Allocation Failure, Elapsed time since start (mls):392142
+GC Action:end of major GC, Duration(mls):574, Cause:Allocation Failure, Elapsed time since start (mls):396003
+GC Action:end of major GC, Duration(mls):609, Cause:Allocation Failure, Elapsed time since start (mls):396005
