@@ -20,6 +20,7 @@
         <module>hw02-DIYArrayList</module>
         <module>hw03-TestFrameWork</module>
         <module>hw04-AutomaticLogging</module>
+        <module>hw05-GCCompare</module>
     </modules>
 
     <dependencies>

@@ -1,0 +1,12 @@
+GC Action:end of minor GC, Duration(mls):30, Cause:Allocation Failure, Elapsed time since start (mls):60716
+GC Action:end of minor GC, Duration(mls):38, Cause:Allocation Failure, Elapsed time since start (mls):125930
+GC Action:end of minor GC, Duration(mls):38, Cause:Allocation Failure, Elapsed time since start (mls):192750
+GC Action:end of minor GC, Duration(mls):36, Cause:Allocation Failure, Elapsed time since start (mls):259467
+GC Action:end of major GC, Duration(mls):202, Cause:Ergonomics, Elapsed time since start (mls):259470
+GC Action:end of major GC, Duration(mls):133, Cause:Ergonomics, Elapsed time since start (mls):325779
+GC Action:end of major GC, Duration(mls):150, Cause:Ergonomics, Elapsed time since start (mls):354206
+GC Action:end of major GC, Duration(mls):130, Cause:Ergonomics, Elapsed time since start (mls):364262
+GC Action:end of major GC, Duration(mls):122, Cause:Ergonomics, Elapsed time since start (mls):367692
+GC Action:end of major GC, Duration(mls):119, Cause:Ergonomics, Elapsed time since start (mls):369316
+GC Action:end of major GC, Duration(mls):118, Cause:Ergonomics, Elapsed time since start (mls):369736
+GC Action:end of major GC, Duration(mls):155, Cause:Ergonomics, Elapsed time since start (mls):372395
