@@ -21,6 +21,7 @@
         <module>hw03-TestFrameWork</module>
         <module>hw04-AutomaticLogging</module>
         <module>hw05-GCCompare</module>
+        <module>hw07-ATMDepartment</module>
     </modules>
 
     <dependencies>
