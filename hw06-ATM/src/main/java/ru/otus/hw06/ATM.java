@@ -8,7 +8,8 @@ import ru.otus.hw06.support.BanknoteCell;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ATM {
+public class ATM implements ATMInterface {
+
     final private Map<Banknote,BanknoteCell> cells;
 
     //Создаем банкомант с ячейками каждого номинала по 10 банкнот (сумма 88500)
@@ -19,18 +20,26 @@ public class ATM {
         }
     }
 
-    //остаток денег в банкомате
+    //Получение остатка денег в банкомате
+    /** {@inheritDoc} */
+    @Override
     public Integer getTotalAmountInNomunal(){
         return this.cells.values().stream().map(BanknoteCell::getAvailableAmountNominalInCell).reduce(Integer::sum).get();
     }
 
     //кладем деньги
+    /** {@inheritDoc} */
+    @Override
     public void putMoney(Banknote banknote, Integer value){
         this.cells.get(banknote).putBanknotes(value);
     }
 
     //снимаем деньги
-    public void getMoney(Integer valueToget){
+    /** {@inheritDoc} */
+    @Override
+    public Map<Banknote, Integer> getMoney(Integer valueToget){
+
+        final Map<Banknote, Integer> returnedBanknotes = new HashMap<>();
 
         if (this.getTotalAmountInNomunal() < valueToget) {
             throw new NotEnoughBanknotesException(valueToget,this.getTotalAmountInNomunal());
@@ -47,13 +56,16 @@ public class ATM {
             if(valueToget >= nominal*this.cells.get(banknote).getAvailableAmountInCell() ){
                 valueToget -= this.cells.get(banknote).getAvailableAmountInCell() * nominal;
                 this.cells.get(banknote).getBanknotes(this.cells.get(banknote).getAvailableAmountInCell());
+                returnedBanknotes.put(banknote,this.cells.get(banknote).getAvailableAmountInCell());
             }else if(valueToget == extractedBanknotes*nominal){
                 valueToget -= extractedBanknotes * nominal;
                 this.cells.get(banknote).getBanknotes(extractedBanknotes);
+                returnedBanknotes.put(banknote,extractedBanknotes);
             }
         }
         if (valueToget > 0) {
             throw new UnableToIssueRequestedAmountException(valueToget);
         }
+        return returnedBanknotes;
     }
 }

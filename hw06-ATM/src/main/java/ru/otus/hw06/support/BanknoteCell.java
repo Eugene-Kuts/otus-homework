@@ -3,9 +3,9 @@ package ru.otus.hw06.support;
 import ru.otus.hw06.exceptions.IllegalOperationException;
 import ru.otus.hw06.exceptions.NotEnoughBanknotesException;
 
-public class BanknoteCell {
+public class BanknoteCell implements BanknoteCellInterface {
 
-    private Banknote banknoteType;
+    private final Banknote banknoteType;
     private Integer countBanknoteInCell;
 
     //Создаем ячейку с номиналом и количеством банкнот
@@ -15,6 +15,8 @@ public class BanknoteCell {
     }
 
     //Получение денег (банкнот) в определенном количестве
+    /** {@inheritDoc} */
+    @Override
     public Integer getBanknotes(int value) {
         if (value<0){
             throw new IllegalOperationException("Невозможно выдать отрицательную сумму");
@@ -27,6 +29,8 @@ public class BanknoteCell {
     }
 
     //Добавление денег в хранилище в определенном размере
+    /** {@inheritDoc} */
+    @Override
     public void putBanknotes(int value) {
         if (value<0){
             throw new IllegalOperationException("Невозможно положить отрицательную сумму");
@@ -35,14 +39,20 @@ public class BanknoteCell {
     }
 
     //какие банкноты лежат в ячейке
+    /** {@inheritDoc} */
+    @Override
     public Banknote getBanknotesType() { return this.banknoteType; }
 
     //количество банкнот в ячейке
+    /** {@inheritDoc} */
+    @Override
     public Integer getAvailableAmountInCell(){
         return this.countBanknoteInCell;
     }
 
     //колчество денег в ячейке
+    /** {@inheritDoc} */
+    @Override
     public Integer getAvailableAmountNominalInCell(){
         return this.banknoteType.getNominal()*this.countBanknoteInCell;
     }
