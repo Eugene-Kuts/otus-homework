@@ -5,19 +5,19 @@ import org.junit.jupiter.api.Test;
 import ru.otus.hw06.exceptions.IllegalOperationException;
 import ru.otus.hw06.exceptions.NotEnoughBanknotesException;
 import ru.otus.hw06.support.Banknote;
-import ru.otus.hw06.support.BanknoteCell;
+import ru.otus.hw06.support.BanknoteCellImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BanknoteCellTest {
 
-    private BanknoteCell banknoteCell;
+    private BanknoteCellImpl banknoteCell;
 
     //Создаем ячейку с номиналом и количеством банкнот
     @BeforeEach
     void initialize() {
-        banknoteCell = new BanknoteCell(Banknote.ONE_HUNDRED, 100);
+        banknoteCell = new BanknoteCellImpl(Banknote.ONE_HUNDRED, 100);
     }
 
     //Кладем деньги в ячейку

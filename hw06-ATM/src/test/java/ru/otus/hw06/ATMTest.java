@@ -12,12 +12,12 @@ import ru.otus.hw06.support.Banknote;
 
 public class ATMTest {
 
-    private ATM atm;
+    private ATMImpl atm;
 
     //Создаем банкомант с ячейками заполненными по умолчанию
     @BeforeEach
     void initialize() {
-        atm = new ATM();
+        atm = new ATMImpl();
     }
 
     //Получаем сумму остатка в банкомате
@@ -67,4 +67,12 @@ public class ATMTest {
     void negativeNumber() {
         assertThrows(IllegalOperationException.class, () -> {atm.getMoney(-500);});
     }
+
+    //проверяем, что после неудачной попытки снятия баланс не изменился
+    @Test
+    void getMoneyOddNumberUnchangedBalance() {
+        assertThrows(UnableToIssueRequestedAmountException.class, () -> {atm.getMoney(5001);});
+        assertEquals(88500, atm.getTotalAmountInNomunal());
+    }
+
 }
