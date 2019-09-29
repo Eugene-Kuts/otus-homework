@@ -2,7 +2,7 @@ package ru.otus.hw07.ATM.Momento;
 
 import lombok.Getter;
 import ru.otus.hw07.ATM.support.Banknote;
-import ru.otus.hw07.ATM.support.BanknoteCell;
+import ru.otus.hw07.ATM.support.BanknoteCellImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +13,11 @@ import java.util.Map;
 @Getter
 public class ATMState {
 
-    private Map<Banknote,BanknoteCell> cellsState;
+    private Map<Banknote, BanknoteCellImpl> cellsState;
 
-    public ATMState(Map<Banknote,BanknoteCell> cells) {
-        Map<Banknote, BanknoteCell> tempCellsState = new HashMap<>();
-        cells.forEach((banknote, banknoteCell) -> {tempCellsState.put(banknote, new BanknoteCell(banknote,banknoteCell.getAvailableAmountInCell()));});
+    public ATMState(Map<Banknote, BanknoteCellImpl> cells) {
+        Map<Banknote, BanknoteCellImpl> tempCellsState = new HashMap<>();
+        cells.forEach((banknote, banknoteCell) -> {tempCellsState.put(banknote, new BanknoteCellImpl(banknote,banknoteCell.getAvailableAmountInCell()));});
         this.cellsState = tempCellsState;
     }
 }

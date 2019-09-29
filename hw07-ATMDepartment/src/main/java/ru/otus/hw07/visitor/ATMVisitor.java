@@ -1,13 +1,12 @@
 package ru.otus.hw07.visitor;
 
-import ru.otus.hw07.ATM.ATM;
+import ru.otus.hw07.ATM.ATMImpl;
 
-public class ATMVisitor implements ATMVisitorInterface {
-
-    /** {@inheritDoc} */
-    @Override
-    public Integer visit(ATM atm) {
-       return atm.getTotalAmountInNomunal();
-    }
-
+public interface ATMVisitor {
+    /**
+     * Получаем сумму остатков в банкомате
+     *
+     * @return сумма остатка в банкомате {@link ATMImpl}
+     */
+    Integer visit(ATMImpl atm);
 }
