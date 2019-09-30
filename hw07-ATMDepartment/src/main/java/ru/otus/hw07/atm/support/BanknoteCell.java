@@ -1,4 +1,4 @@
-package ru.otus.hw07.ATM.support;
+package ru.otus.hw07.atm.support;
 
 /*
 Ячейка с банкнотами

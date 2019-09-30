@@ -3,9 +3,9 @@ package ru.otus.hw07;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import ru.otus.hw07.ATM.ATMImpl;
-import ru.otus.hw07.ATM.support.Banknote;
-import ru.otus.hw07.ATM.support.BanknoteCellImpl;
+import ru.otus.hw07.atm.ATMImpl;
+import ru.otus.hw07.atm.support.Banknote;
+import ru.otus.hw07.atm.support.BanknoteCellImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;

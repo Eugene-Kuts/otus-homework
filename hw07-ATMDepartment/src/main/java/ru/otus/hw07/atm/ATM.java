@@ -1,7 +1,7 @@
-package ru.otus.hw07.ATM;
+package ru.otus.hw07.atm;
 
-import ru.otus.hw07.ATM.support.Banknote;
-import ru.otus.hw07.visitor.ATMVisitorImpl;
+import ru.otus.hw07.atm.support.Banknote;
+import ru.otus.hw07.visitor.ATMVisitor;
 
 import java.util.Map;
 
@@ -32,17 +32,11 @@ public interface ATM {
     Map<Banknote, Integer> getMoney(Integer valueToget);
 
     /**
-     * Восстановление состояние банкомата из переданного.
-     *
-     */
-    void restoreDefaultATM();
-
-    /**
      * Посещаем данный банкомат для получения остатка
      *
-     * @param visitor объект {@link ATMVisitorImpl}
+     * @param visitor объект {@link ATMVisitor}
      *
      * @return сумма остатка в банкомате
      */
-    Integer accept(ATMVisitorImpl visitor);
+    Integer accept(ATMVisitor visitor);
 }

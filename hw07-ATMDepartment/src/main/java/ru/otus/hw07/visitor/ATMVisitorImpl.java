@@ -1,6 +1,6 @@
 package ru.otus.hw07.visitor;
 
-import ru.otus.hw07.ATM.ATMImpl;
+import ru.otus.hw07.atm.ATMImpl;
 
 public class ATMVisitorImpl implements ATMVisitor {
 

@@ -1,8 +1,8 @@
-package ru.otus.hw07.ATM.Momento;
+package ru.otus.hw07.atm.momento;
 
 import lombok.Getter;
-import ru.otus.hw07.ATM.support.Banknote;
-import ru.otus.hw07.ATM.support.BanknoteCellImpl;
+import ru.otus.hw07.atm.support.Banknote;
+import ru.otus.hw07.atm.support.BanknoteCellImpl;
 
 import java.util.HashMap;
 import java.util.Map;

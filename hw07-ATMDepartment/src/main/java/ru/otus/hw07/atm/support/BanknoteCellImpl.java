@@ -1,7 +1,7 @@
-package ru.otus.hw07.ATM.support;
+package ru.otus.hw07.atm.support;
 
-import ru.otus.hw07.ATM.exceptions.IllegalOperationException;
-import ru.otus.hw07.ATM.exceptions.NotEnoughBanknotesException;
+import ru.otus.hw07.atm.exceptions.IllegalOperationException;
+import ru.otus.hw07.atm.exceptions.NotEnoughBanknotesException;
 
 public class BanknoteCellImpl implements BanknoteCell {
 

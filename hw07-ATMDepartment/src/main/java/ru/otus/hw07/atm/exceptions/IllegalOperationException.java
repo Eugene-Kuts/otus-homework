@@ -1,4 +1,4 @@
-package ru.otus.hw07.ATM.exceptions;
+package ru.otus.hw07.atm.exceptions;
 
 public class IllegalOperationException extends RuntimeException {
 

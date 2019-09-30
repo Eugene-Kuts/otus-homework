@@ -1,6 +1,6 @@
 package ru.otus.hw07;
 
-import ru.otus.hw07.ATM.ATMImpl;
+import ru.otus.hw07.atm.ATMImpl;
 import ru.otus.hw07.visitor.ATMVisitorImpl;
 
 import java.util.ArrayList;

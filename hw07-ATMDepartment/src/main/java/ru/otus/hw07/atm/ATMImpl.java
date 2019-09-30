@@ -1,16 +1,17 @@
-package ru.otus.hw07.ATM;
+package ru.otus.hw07.atm;
 
-import ru.otus.hw07.ATM.Momento.ATMState;
-import ru.otus.hw07.ATM.exceptions.NotEnoughBanknotesException;
-import ru.otus.hw07.ATM.exceptions.UnableToIssueRequestedAmountException;
-import ru.otus.hw07.ATM.support.Banknote;
-import ru.otus.hw07.ATM.support.BanknoteCellImpl;
-import ru.otus.hw07.visitor.ATMVisitorImpl;
+import ru.otus.hw07.atm.momento.ATMState;
+import ru.otus.hw07.atm.exceptions.NotEnoughBanknotesException;
+import ru.otus.hw07.atm.exceptions.UnableToIssueRequestedAmountException;
+import ru.otus.hw07.atm.support.ATMService;
+import ru.otus.hw07.atm.support.Banknote;
+import ru.otus.hw07.atm.support.BanknoteCellImpl;
+import ru.otus.hw07.visitor.ATMVisitor;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ATMImpl implements ATM {
+public class ATMImpl implements ATM, ATMService {
 
     private ATMState defaultATMstate;
     private Map<Banknote, BanknoteCellImpl> cells;
@@ -82,7 +83,7 @@ public class ATMImpl implements ATM {
 
     /** {@inheritDoc} */
     @Override
-    public Integer accept(ATMVisitorImpl visitor) {
+    public Integer accept(ATMVisitor visitor) {
         return visitor.visit(this);
     }
 }
