@@ -25,6 +25,7 @@
         <module>hw06-ATM</module>
         <module>hw07-ATMDepartment</module>
         <module>hw08-JsonObjectWriter</module>
+        <module>hw09-SelfMadeORM</module>
     </modules>
 
     <dependencies>
