@@ -25,7 +25,8 @@
         <module>hw06-ATM</module>
         <module>hw07-ATMDepartment</module>
         <module>hw08-JsonObjectWriter</module>
-        <module>hw09-SelfMadeORM</module>
+        <!--module>hw09-SelfMadeORM</module-->
+        <module>hw10-Hibernate</module>
     </modules>
 
     <dependencies>
@@ -104,6 +105,8 @@
         <com.google.code.gson.verrsion>2.8.5</com.google.code.gson.verrsion>
         <com.google.guava.version>28.0-jre</com.google.guava.version>
         <javassist.vesrsion>3.25.0-GA</javassist.vesrsion>
+        <h2database.version>1.4.200</h2database.version>
+        <hibernate-core.version>5.4.7.Final</hibernate-core.version>
         <!--endregion-->
     </properties>
 
@@ -153,6 +156,16 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok-maven-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2database.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate-core.version}</version>
             </dependency>
             <!--region JSON-P-->
             <dependency>
