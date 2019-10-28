@@ -90,13 +90,11 @@
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
         <maven.compiler.release>${java.version}</maven.compiler.release>
-
         <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
         <maven-assembly-plugin.descriptorSuffix>jar-with-dependencies</maven-assembly-plugin.descriptorSuffix>
-
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
-
         <lombok-maven-plugin.version>1.18.8</lombok-maven-plugin.version>
+        <h2database.version>1.4.200</h2database.version>
         <!--endregion-->
 
         <!--region Libs -->
@@ -153,7 +151,7 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok-maven-plugin.version}</version>
-            </dependency>
+            </dependency>          
             <!--region JSON-P-->
             <dependency>
                 <groupId>javax.json</groupId>
@@ -167,7 +165,13 @@
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
             </dependency>
+          <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>{h2database.version}</version>
+            </dependency>
             <!--endregion-->
+
         </dependencies>
     </dependencyManagement>
 
