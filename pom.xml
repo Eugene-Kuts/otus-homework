@@ -12,6 +12,7 @@
     <developers>
         <developer>
             <name>Eugene-Kuts</name>
+            <email>eugene.kuts@gmail.com</email>
         </developer>
     </developers>
 
@@ -23,6 +24,8 @@
         <module>hw05-GCCompare</module>
         <module>hw06-ATM</module>
         <module>hw07-ATMDepartment</module>
+        <module>hw08-JsonObjectWriter</module>
+        <module>hw09-SelfMadeORM</module>
     </modules>
 
     <dependencies>
@@ -48,6 +51,23 @@
             <artifactId>javassist</artifactId>
             <version>${javassist.vesrsion}</version>
         </dependency>
+        <!--region JSON-P-->
+        <dependency>
+            <groupId>javax.json</groupId>
+            <artifactId>javax.json-api</artifactId>
+            <version>${javax.json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>${javax.json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${com.google.code.gson.verrsion}</version>
+        </dependency>
+        <!--endregion-->
     </dependencies>
 
     <properties>
@@ -78,6 +98,8 @@
         <!--endregion-->
 
         <!--region Libs -->
+        <javax.json.version>1.1.4</javax.json.version>
+        <com.google.code.gson.verrsion>2.8.5</com.google.code.gson.verrsion>
         <com.google.guava.version>28.0-jre</com.google.guava.version>
         <javassist.vesrsion>3.25.0-GA</javassist.vesrsion>
         <!--endregion-->
@@ -129,12 +151,27 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok-maven-plugin.version}</version>
+            </dependency>          
+            <!--region JSON-P-->
+            <dependency>
+                <groupId>javax.json</groupId>
+                <artifactId>javax.json-api</artifactId>
             </dependency>
             <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.json</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+            </dependency>
+          <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>{h2database.version}</version>
             </dependency>
+            <!--endregion-->
+
         </dependencies>
     </dependencyManagement>
 
