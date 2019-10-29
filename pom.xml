@@ -140,6 +140,7 @@
         <maven-assembly-plugin.descriptorSuffix>jar-with-dependencies</maven-assembly-plugin.descriptorSuffix>
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
         <lombok-maven-plugin.version>1.18.8</lombok-maven-plugin.version>
+        <h2database.version>1.4.200</h2database.version>
         <!--endregion-->
 
         <!--region Libs -->
@@ -209,6 +210,7 @@
                 <artifactId>hibernate-core</artifactId>
                 <version>${hibernate-core.version}</version>
             </dependency>
+            </dependency>          
             <!--region JSON-P-->
             <dependency>
                 <groupId>javax.json</groupId>
@@ -221,6 +223,11 @@
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
+            </dependency>
+          <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>{h2database.version}</version>
             </dependency>
             <!--endregion-->
         </dependencies>

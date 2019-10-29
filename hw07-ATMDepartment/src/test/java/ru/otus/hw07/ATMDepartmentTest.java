@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ATMDepartmentTests {
+public class ATMDepartmentTest {
     private ATMDepartmentImpl atmDepartment;
     private ATMImpl atm1;
     private ATMImpl atm2;
