@@ -3,6 +3,7 @@ package ru.otus.hw10.dataClasses;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 //Чтобы класс мог быть @Entity, к нему предъявляются следующие требования:
@@ -40,8 +41,8 @@ public class User {
     private AddressDataSet addressDataSet;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "phoneTable_id", nullable = false)
-    private List<PhoneDataSet> phoneDataSet=null;
+    @JoinColumn(name = "phoneTable_id", nullable = true)
+    private List<PhoneDataSet> phoneDataSet = new ArrayList<>();
 
     public User(String name, int age, AddressDataSet addressDataSet, List<PhoneDataSet> phoneDataSet) {
         this.name = name;

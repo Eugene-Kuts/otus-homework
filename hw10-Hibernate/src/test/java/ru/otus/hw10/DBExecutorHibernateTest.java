@@ -21,21 +21,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("DBExecutorHibernateTests")
-public class DBExecutorHibernateTests {
-    private static final String HIBERNATE_CFG_FILE = "hibernate.cfg.xml";
+public class DBExecutorHibernateTest {
+    private static final String HIBERNATE_CFG_FILE = "hibernate-test.cfg.xml";
 
     private DBExecutorHibernate dbExecutor;
 
     @BeforeEach
-    @SneakyThrows
+   // @SneakyThrows
     void setUp() {
         final Configuration configuration = new Configuration().configure(HIBERNATE_CFG_FILE);
-        final StandardServiceRegistry serviceRegistryUser = new StandardServiceRegistryBuilder()
+        final StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties())
                 .build();
-        final Metadata metadata = new MetadataSources(serviceRegistryUser)
+        final Metadata metadata = new MetadataSources(serviceRegistry)
                 .addAnnotatedClass(User.class)
                 .addAnnotatedClass(AddressDataSet.class)
                 .addAnnotatedClass(PhoneDataSet.class)
@@ -43,6 +44,17 @@ public class DBExecutorHibernateTests {
                 .getMetadataBuilder().build();
 
         dbExecutor = new DBExecutorHibernateImpl(metadata.getSessionFactoryBuilder().build());
+    }
+
+    @Test
+    @DisplayName("Создаем User'а с полями null")
+    void createNullUserTest() {
+        final User user = new User();
+        dbExecutor.create(user);
+        User loadedUser = (User) dbExecutor.load(user.getId(), User.class);
+        System.out.println("=" + dbExecutor.load(user.getId(), User.class));
+        //assertThat(dbExecutor.load(user.getId(), User.class)).isEqualToComparingFieldByField(user);
+        assertThat(loadedUser).isEqualToComparingFieldByFieldRecursively(user);
     }
 
     @Test
@@ -90,18 +102,9 @@ public class DBExecutorHibernateTests {
     @Test
     @DisplayName("Создаем Account")
     void createAccount() {
-        final Account account = new Account("Премиальный", new BigDecimal(555684.00));
+        final Account account = new Account("Премиальный", new BigDecimal("555684.71"));
         dbExecutor.create(account);
         assertThat(dbExecutor.load(account.getNo(), Account.class)).isEqualToComparingFieldByField(account);
-    }
-
-    @Test
-    @DisplayName("Создаем User'а с полями null")
-    void createNullUser() {
-        final User user = new User();
-        dbExecutor.create(user);
-        System.out.println("=" + dbExecutor.load(user.getId(), User.class));
-        assertThat(dbExecutor.load(user.getId(), User.class)).isEqualToComparingFieldByField(user);
     }
 
     @Test

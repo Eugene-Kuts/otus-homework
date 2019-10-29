@@ -15,7 +15,7 @@ public class DBExecutorHibernateImpl<T> implements DBExecutorHibernate<T> {
         System.out.println("Create");
         try (final Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            session.persist(objectData);
+            session.save(objectData);
             session.getTransaction().commit();
             session.close();
         }
