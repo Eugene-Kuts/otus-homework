@@ -1,0 +1,28 @@
+<configuration scan="true" scanPeriod="10 seconds">
+    <jmxConfigurator/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate" level="ERROR"/>
+    <logger name="ch.qos.logback" level="ERROR"/>
+
+    <logger name="ru.otus.hw11.Main" level="info" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="ru.otus.hw11.cache.CacheListenerImpl" level="info" additivity="true">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="ru.otus.hw11.cache.CacheImpl" level="info" additivity="true">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

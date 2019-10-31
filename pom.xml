@@ -25,8 +25,9 @@
         <module>hw06-ATM</module>
         <module>hw07-ATMDepartment</module>
         <module>hw08-JsonObjectWriter</module>
-        <!--module>hw09-SelfMadeORM</module-->
+        <module>hw09-SelfMadeORM</module>
         <module>hw10-Hibernate</module>
+        <module>hw11-DIYCacheEngine</module>
     </modules>
 
     <dependencies>
@@ -111,6 +112,13 @@
             <version>${junit.platform.surefire.provider.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--region Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+        </dependency>
+        <!--endregion-->
     </dependencies>
 
     <properties>
@@ -131,6 +139,12 @@
         <assertj.version>3.12.2</assertj.version>
         <!--endregion-->
 
+        <!--region Logging-->
+        <slf4j-api.version>1.7.26</slf4j-api.version>
+        <slf4j-log4j12.version>1.7.26</slf4j-log4j12.version>
+        <logback-classic.version>1.2.3</logback-classic.version>
+        <!--endregion-->
+
         <!--region Plugins-->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -140,7 +154,6 @@
         <maven-assembly-plugin.descriptorSuffix>jar-with-dependencies</maven-assembly-plugin.descriptorSuffix>
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
         <lombok-maven-plugin.version>1.18.8</lombok-maven-plugin.version>
-        <h2database.version>1.4.200</h2database.version>
         <!--endregion-->
 
         <!--region Libs -->
@@ -210,7 +223,6 @@
                 <artifactId>hibernate-core</artifactId>
                 <version>${hibernate-core.version}</version>
             </dependency>
-            </dependency>          
             <!--region JSON-P-->
             <dependency>
                 <groupId>javax.json</groupId>
@@ -223,11 +235,6 @@
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
-            </dependency>
-          <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>{h2database.version}</version>
             </dependency>
             <!--endregion-->
         </dependencies>
