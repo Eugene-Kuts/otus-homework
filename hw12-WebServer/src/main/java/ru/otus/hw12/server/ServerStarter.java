@@ -17,13 +17,15 @@ import ru.otus.hw12.db.utils.SessionFactories;
 import ru.otus.hw12.server.servlets.AdminServlet;
 import ru.otus.hw12.server.servlets.LoginServlet;
 import ru.otus.hw12.server.utils.AuthorizationFilter;
+import ru.otus.hw12.server.utils.TemplateProcessor;
 import ru.otus.hw12.server.utils.UserAuthenticationService;
+import ru.otus.hw12.server.utils.UserAuthenticationServiceImpl;
 
 public class ServerStarter {
 
     private static final int PORT = 8080;
     private static final String RESOURCES_PATH = "/static";
-    private static final UserAuthenticationService USER_AUTHENTICATION_SERVICE = new UserAuthenticationService();
+    private static final UserAuthenticationService USER_AUTHENTICATION_SERVICE = new UserAuthenticationServiceImpl();
     private DBExecutorHibernate<User> userDBExecutor;
     private Server server;
 
@@ -38,8 +40,8 @@ public class ServerStarter {
         Resource resource = Resource.newClassPathResource(RESOURCES_PATH);
         resourceHandler.setBaseResource(resource);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(new LoginServlet(USER_AUTHENTICATION_SERVICE)), "/login");
-        context.addServlet(new ServletHolder(new AdminServlet(userDBExecutor)), "/admin");
+        context.addServlet(new ServletHolder(new LoginServlet(USER_AUTHENTICATION_SERVICE, new TemplateProcessor())), "/login");
+        context.addServlet(new ServletHolder(new AdminServlet(userDBExecutor, new TemplateProcessor())), "/admin");
         context.addFilter(new FilterHolder(new AuthorizationFilter()), "/admin", null);
         server = new Server(PORT);
         server.setHandler(new HandlerList(resourceHandler, context));
