@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель администратора</title>
+</head>
+<body>
+<p>
+    <img src="myLogo.png">
+</p>
+<h3>
+    Панель администратора
+</h3>
+<hr>
+<hr>
+<form action="/admin" method="post">
+    <p style="font-size:120%;">Создать нового пользователя</p>
+    <p>
+        <input type="text" name="userName" placeholder="Введите имя" required/>
+    </p>
+    <p>
+        <input type="number" name="userAge" placeholder="Введите возраст" required/>
+    </p>
+    <p>
+        <input type="text" name="userAddress" placeholder="Адрес" required/>
+    </p>
+    <p>
+        <input type="text" name="userPhone" placeholder="Телефон" required/>
+    </p>
+    <input type="submit" name="createUser" value="Создать нового пользователя">
+</form>
+<p>
+</p>
+<hr>
+<hr>
+<form action="/admin" method="get">
+    <p>
+        <input type="submit" name="getUsersList" value="Получить список пользователей">
+    </p>
+</form>
+<table border="1">
+    <p style="font-size:120%;">Список пользователей</p>
+    <tr>
+        <td>ID</td>
+        <td>Имя</td>
+        <td>Возраст</td>
+        <td>Адрес</td>
+        <td>Телефон</td>
+    </tr>
+    <#list usersList as user>
+    <tr ng-repeat="user in usersList">
+        <td>${user.id}</td>
+        <td>${user.name}</td>
+        <td>${user.age}</td>
+        <td>${user.addressDataSet.street}</td>
+        <td>${user.phoneDataSet[0].number}</td>
+    </tr>
+    </#list>
+</table>
+<hr>
+<hr>
+<br>
+<form action="/admin" method="post">
+    <input type="submit" name="exitAdminPanel" value="Выход">
+</form>
+</body>
+</html>

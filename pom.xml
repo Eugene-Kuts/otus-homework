@@ -28,6 +28,7 @@
         <module>hw09-SelfMadeORM</module>
         <module>hw10-Hibernate</module>
         <module>hw11-DIYCacheEngine</module>
+        <module>hw12-WebServer</module>
     </modules>
 
     <dependencies>
@@ -119,6 +120,18 @@
             <version>${logback-classic.version}</version>
         </dependency>
         <!--endregion-->
+        <!--region jetty-->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <!--endregion-->
     </dependencies>
 
     <properties>
@@ -163,6 +176,11 @@
         <javassist.vesrsion>3.25.0-GA</javassist.vesrsion>
         <h2database.version>1.4.200</h2database.version>
         <hibernate-core.version>5.4.7.Final</hibernate-core.version>
+        <!--endregion-->
+
+        <!--region Web -->
+        <jetty.version>9.4.22.v20191022</jetty.version>
+        <freemarker.version>2.3.28</freemarker.version>
         <!--endregion-->
     </properties>
 
@@ -237,6 +255,23 @@
                 <artifactId>gson</artifactId>
             </dependency>
             <!--endregion-->
+            <!--region jetty-->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-server</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-servlet</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+            <!--endregion-->
         </dependencies>
     </dependencyManagement>
 
@@ -274,13 +309,6 @@
                         <target>1.8</target>
                     </configuration>
                 </plugin>
-                <!--plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                    <configuration-->
-                        <!--argLine>--><!--enable-preview</argLine>
-                    </configuration-->
-                <!--/plugin-->
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>

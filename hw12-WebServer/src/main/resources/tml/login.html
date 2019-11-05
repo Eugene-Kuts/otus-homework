@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        Авторизация
+    </title>
+</head>
+<body>
+<img src="myLogo.png">
+<form action="/login" method="post">
+    <p style="font-size:120%;">Введите логин/пароль администратора</p>
+    <p>
+        <input type="text" name="username" placeholder="Введите логин" required/>
+    </p>
+    <p>
+        <input type="password" name="password" placeholder="Введите пароль" required/>
+    </p>
+    <input type="submit" value="Отправить">
+</form>
+<p>${resultMsg}</p>
+</body>
+</html>
