@@ -25,9 +25,10 @@ public class ServerStarter {
 
     private static final int PORT = 8080;
     private static final String RESOURCES_PATH = "/static";
-    private static final UserAuthenticationService USER_AUTHENTICATION_SERVICE = new UserAuthenticationServiceImpl();
+    private static UserAuthenticationService USER_AUTHENTICATION_SERVICE = new UserAuthenticationServiceImpl();
     private DBExecutorHibernate<User> userDBExecutor;
     private Server server;
+    private TemplateProcessor templateProcessor = new TemplateProcessor();
 
     @SneakyThrows
     public void start() {
@@ -40,8 +41,8 @@ public class ServerStarter {
         Resource resource = Resource.newClassPathResource(RESOURCES_PATH);
         resourceHandler.setBaseResource(resource);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(new LoginServlet(USER_AUTHENTICATION_SERVICE, new TemplateProcessor())), "/login");
-        context.addServlet(new ServletHolder(new AdminServlet(userDBExecutor, new TemplateProcessor())), "/admin");
+        context.addServlet(new ServletHolder(new LoginServlet(USER_AUTHENTICATION_SERVICE, templateProcessor)), "/login");
+        context.addServlet(new ServletHolder(new AdminServlet(userDBExecutor, templateProcessor)), "/admin");
         context.addFilter(new FilterHolder(new AuthorizationFilter()), "/admin", null);
         server = new Server(PORT);
         server.setHandler(new HandlerList(resourceHandler, context));
