@@ -29,6 +29,7 @@
         <module>hw10-Hibernate</module>
         <module>hw11-DIYCacheEngine</module>
         <module>hw12-WebServer</module>
+        <module>hw14-SequenceOfNumbers</module>
     </modules>
 
     <dependencies>
