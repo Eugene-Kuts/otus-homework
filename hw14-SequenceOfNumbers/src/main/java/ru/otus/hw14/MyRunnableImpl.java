@@ -14,7 +14,7 @@ public class MyRunnableImpl implements Runnable {
     private void print(int number) {
         synchronized (monitor) {
             try {
-                System.out.println(Thread.currentThread().getName() + " : "  + number);
+                System.out.println(Thread.currentThread().getName() + " : " + number);
                 monitor.notifyAll();
                 monitor.wait(1000L);
             } catch (InterruptedException e) {
@@ -23,14 +23,14 @@ public class MyRunnableImpl implements Runnable {
         }
     }
 
-    private void incrementPrint(){
-        for (int i=runFrom;i<=runTo;i++){
+    private void incrementPrint() {
+        for (int i = runFrom; i <= runTo; i++) {
             print(i);
         }
     }
 
-    private void decrementPrint(){
-        for (int i=runTo;i>=runFrom;i--){
+    private void decrementPrint() {
+        for (int i = runTo; i >= runFrom; i--) {
             print(i);
         }
     }
