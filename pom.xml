@@ -29,6 +29,7 @@
         <module>hw10-Hibernate</module>
         <module>hw11-DIYCacheEngine</module>
         <module>hw12-WebServer</module>
+        <module>hw13-IoCContainerApp</module>
         <module>hw14-SequenceOfNumbers</module>
     </modules>
 
@@ -133,12 +134,28 @@
             <version>${jetty.version}</version>
         </dependency>
         <!--endregion-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${javaee-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <!--region General-->
         <java.version>11</java.version>
-        <minimal.maven.version>3.3.9</minimal.maven.version>
+        <minimal.maven.version>3.6.2</minimal.maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--endregion-->
@@ -168,6 +185,8 @@
         <maven-assembly-plugin.descriptorSuffix>jar-with-dependencies</maven-assembly-plugin.descriptorSuffix>
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
         <lombok-maven-plugin.version>1.18.8</lombok-maven-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
+        <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
         <!--endregion-->
 
         <!--region Libs -->
@@ -177,6 +196,9 @@
         <javassist.vesrsion>3.25.0-GA</javassist.vesrsion>
         <h2database.version>1.4.200</h2database.version>
         <hibernate-core.version>5.4.7.Final</hibernate-core.version>
+        <org.springframework.version>5.2.1.RELEASE</org.springframework.version>
+        <jstl.version>1.2</jstl.version>
+        <javaee-api.version>7.0</javaee-api.version>
         <!--endregion-->
 
         <!--region Web -->
@@ -330,6 +352,25 @@
                     </dependencies>
                 </plugin>
                 <plugin>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-maven</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>${minimal.maven.version}</version>
+                                    </requireMavenVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
                     <artifactId>maven-shade-plugin</artifactId>
                     <version>${maven-shade-plugin.version}</version>
                     <executions>
@@ -340,6 +381,10 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
