@@ -1,13 +1,14 @@
 package ru.otus.hw13.db.cache;
 
+import org.springframework.stereotype.Component;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.WeakHashMap;
 
+@Component
 public class CacheImpl<K, V> implements Cache<K, V> {
-
-    //private static Logger logger = LoggerFactory.getLogger(CacheImpl.class);
 
     private final WeakHashMap<K, V> data = new WeakHashMap<>();
     private List<WeakReference<CacheListener<K, V>>> listeners = new ArrayList<>();

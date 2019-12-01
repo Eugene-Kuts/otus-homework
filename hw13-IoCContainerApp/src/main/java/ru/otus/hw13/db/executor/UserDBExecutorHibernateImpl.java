@@ -3,6 +3,7 @@ package ru.otus.hw13.db.executor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 import ru.otus.hw13.db.cache.Cache;
 import ru.otus.hw13.db.dataClasses.User;
 
@@ -12,6 +13,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+@Component
 @RequiredArgsConstructor
 public class UserDBExecutorHibernateImpl implements DBExecutorHibernate<User> {
 
