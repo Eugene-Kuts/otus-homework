@@ -202,7 +202,7 @@
         <!--endregion-->
 
         <!--region Web -->
-        <jetty.version>9.4.22.v20191022</jetty.version>
+        <jetty.version>9.4.24.v20191120</jetty.version>
         <freemarker.version>2.3.28</freemarker.version>
         <!--endregion-->
     </properties>
