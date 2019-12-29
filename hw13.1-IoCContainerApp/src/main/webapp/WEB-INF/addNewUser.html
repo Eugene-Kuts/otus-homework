@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Создать нового пользователя</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+        input:read-only {
+            background: lightgray;
+        }
+        .row {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<hr>
+<form id="createNewUserform" th:action="@{/createNewUser}" th:method="post" accept-charset="utf-8">
+    <p style="font-size:120%;">Создать нового пользователя</p>
+    <p>
+        <input type="text" name="userName" placeholder="Name" required/>
+    </p>
+    <p>
+        <input type="number" name="userAge" placeholder="Age" required/>
+    </p>
+    <p>
+        <input type="text" name="userAddress" placeholder="Address" required/>
+    </p>
+    <p>
+        <input type="text" name="userPhone" placeholder="Phone" required/>
+    </p>
+    <input type="submit" name="createNewUser" value="Create new user">
+</form>
+<hr>
+</body>
+</html>
