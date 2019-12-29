@@ -11,10 +11,10 @@ import ru.otus.hw15.messagesystem.common.Serializers;
 import java.util.Optional;
 
 public class GetAddUserRequestHandler implements RequestHandler {
-    private final DBExecutorHibernate dbExecutorHibernate;
+    private final DBExecutorHibernate<User> dbExecutorHibernate;
     private final Gson gson = new Gson();
 
-    public GetAddUserRequestHandler(DBExecutorHibernate dbExecutorHibernate) {
+    public GetAddUserRequestHandler(DBExecutorHibernate<User> dbExecutorHibernate) {
         this.dbExecutorHibernate = dbExecutorHibernate;
     }
 
@@ -26,6 +26,6 @@ public class GetAddUserRequestHandler implements RequestHandler {
         User UserWithID = dbExecutorHibernate.load(UserID);
         String savedUserData = gson.toJson(UserWithID);
         return Optional.of(new Message(msg.getTo(), msg.getFrom(), Optional.of(msg.getId()),
-                MessageType.ADD_USER.getValue(), Serializers.serialize(savedUserData)));
+                MessageType.GET_SAVED_USER.getValue(), Serializers.serialize(savedUserData)));
     }
 }
