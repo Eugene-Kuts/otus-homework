@@ -1,0 +1,7 @@
+server:
+  port: 8085
+
+MessageSystem:
+  ClientName:
+    FrontEndService : frontendService
+    DBService : databaseService

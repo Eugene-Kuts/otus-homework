@@ -31,6 +31,7 @@
         <module>hw12-WebServer</module>
         <module>hw13-IoCContainerApp</module>
         <module>hw14-SequenceOfNumbers</module>
+        <module>hw15-MessageSystem</module>
     </modules>
 
     <dependencies>
