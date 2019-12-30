@@ -16,7 +16,7 @@ import java.util.List;
 @Controller
 public class AdminPanelController {
 
-    private DBExecutorHibernate<User> userDBExecutor;
+    private final DBExecutorHibernate<User> userDBExecutor;
 
     public AdminPanelController(DBExecutorHibernate<User> userDBExecutor) {
         this.userDBExecutor = userDBExecutor;

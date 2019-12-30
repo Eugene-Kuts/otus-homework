@@ -1,7 +1,6 @@
 package ru.otus.hw13.config;
 
 import lombok.RequiredArgsConstructor;
-import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,12 +10,6 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
-import ru.otus.hw13.db.cache.Cache;
-import ru.otus.hw13.db.cache.CacheImpl;
-import ru.otus.hw13.db.domain.User;
-import ru.otus.hw13.db.executor.DBExecutorHibernate;
-import ru.otus.hw13.db.executor.UserDBExecutorHibernateImpl;
-import ru.otus.hw13.db.utils.SessionFactories;
 
 @Configuration
 @EnableWebMvc
@@ -53,18 +46,4 @@ public class WebConfig {
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
-
-    @Bean
-    public DBExecutorHibernate<User> userDbService() {
-        return new UserDBExecutorHibernateImpl(sessionFactory(), userCache());
-    }
-
-    public Cache<Long, User> userCache() {
-        return new CacheImpl<>();
-    }
-
-    public SessionFactory sessionFactory() {
-        return SessionFactories.get();
-    }
-
 }
