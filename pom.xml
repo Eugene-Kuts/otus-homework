@@ -30,6 +30,7 @@
         <module>hw11-DIYCacheEngine</module>
         <module>hw12-WebServer</module>
         <module>hw13-IoCContainerApp</module>
+        <module>hw13.1-IoCContainerApp</module>
         <module>hw14-SequenceOfNumbers</module>
         <module>hw15-MessageSystem</module>
     </modules>
