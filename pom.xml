@@ -33,6 +33,9 @@
         <module>hw13.1-IoCContainerApp</module>
         <module>hw14-SequenceOfNumbers</module>
         <module>hw15-MessageSystem</module>
+        <module>hw16-MessageServer</module>
+        <module>hw16-Frontend</module>
+        <module>hw16-DBServer</module>
     </modules>
 
     <dependencies>

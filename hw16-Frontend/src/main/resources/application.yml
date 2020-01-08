@@ -1,0 +1,16 @@
+server:
+  port: 8085
+
+messageserver:
+  port: 8087
+  host: localhost
+
+dbserver:
+  name: databaseService
+  port: 8086
+  host: localhost
+
+frontendserver:
+  name: frontendService
+  port: 8088
+  host: localhost
