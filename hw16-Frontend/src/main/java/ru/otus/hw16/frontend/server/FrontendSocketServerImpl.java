@@ -3,7 +3,7 @@ package ru.otus.hw16.frontend.server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.otus.message.Message;
 import ru.otus.hw16.frontend.messagesystem.front.FrontendService;
 
@@ -12,20 +12,22 @@ import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-@Component
-public class FrontendServer {
+@Service
+public class FrontendSocketServerImpl implements FrontendSocketServer{
 
-    private static Logger logger = LoggerFactory.getLogger(FrontendServer.class);
+    private static Logger logger = LoggerFactory.getLogger(FrontendSocketServerImpl.class);
 
-    private FrontendService frontendService;
+    private final FrontendService frontendService;
 
-    private int frontendSocketServerPort;
+    private final int frontendSocketServerPort;
 
-    public FrontendServer(@Value("${frontendserver.port}") int frontendSocketServerPort, FrontendService frontendService) {
+    public FrontendSocketServerImpl(@Value("${frontend-server.port}") int frontendSocketServerPort, FrontendService frontendService) {
         this.frontendSocketServerPort = frontendSocketServerPort;
         this.frontendService = frontendService;
     }
 
+    /** {@inheritDoc} */
+    @Override
     public void startServer() {
         try (ServerSocket serverSocket = new ServerSocket(frontendSocketServerPort)) {
             logger.info("Starting frontendServerSocket on port: {}", frontendSocketServerPort);

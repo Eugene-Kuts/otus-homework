@@ -26,7 +26,7 @@ public class FrontendServiceImpl implements FrontendService {
     private final MsClient msClient;
     private final String databaseServiceClientName;
 
-    public FrontendServiceImpl(MsClient msClient, @Value("${dbserver.name}") String databaseServiceClientName) {
+    public FrontendServiceImpl(MsClient msClient, @Value("${db-server.name}") String databaseServiceClientName) {
         this.msClient = msClient;
         this.databaseServiceClientName = databaseServiceClientName;
     }

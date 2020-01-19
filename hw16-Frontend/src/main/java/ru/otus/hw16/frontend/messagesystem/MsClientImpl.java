@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import ru.otus.hw16.frontend.client.MessageSystemClient;
+import ru.otus.hw16.frontend.client.FrontEndSocketClient;
 import ru.otus.hw16.frontend.messagesystem.common.Serializers;
 import ru.otus.message.Message;
 
@@ -21,11 +21,11 @@ public class MsClientImpl implements MsClient {
 
     private final Map<String, RequestHandler> handlers = new ConcurrentHashMap<>();
 
-    private MessageSystemClient messageSystemClient;
+    private final FrontEndSocketClient frontEndSocketClient;
 
-    public MsClientImpl(@Value("${frontendserver.name}") String msClientName, MessageSystemClient messageSystemClient) {
-        this.name = msClientName;
-        this.messageSystemClient = messageSystemClient;
+    public MsClientImpl(@Value("${frontend-server.name}") String name, FrontEndSocketClient frontEndSocketClient) {
+        this.name = name;
+        this.frontEndSocketClient = frontEndSocketClient;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MsClientImpl implements MsClient {
 
     @Override
     public boolean sendMessage(Message msg) {
-        messageSystemClient.sendMessage(msg);
+        frontEndSocketClient.sendMessage(msg);
 
         return true;
     }
@@ -73,11 +73,11 @@ public class MsClientImpl implements MsClient {
         MsClientImpl that = (MsClientImpl) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(handlers, that.handlers) &&
-                Objects.equals(messageSystemClient, that.messageSystemClient);
+                Objects.equals(frontEndSocketClient, that.frontEndSocketClient);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, handlers, messageSystemClient);
+        return Objects.hash(name, handlers, frontEndSocketClient);
     }
 }

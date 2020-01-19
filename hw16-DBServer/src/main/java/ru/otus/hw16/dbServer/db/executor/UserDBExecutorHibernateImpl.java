@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import ru.otus.hw16.dbServer.db.cache.Cache;
 import ru.otus.hw16.dbServer.db.domain.User;
 import ru.otus.hw16.dbServer.messagesystem.DBServerMsClientImpl;
@@ -15,6 +16,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+@Service
 @RequiredArgsConstructor
 public class UserDBExecutorHibernateImpl implements DBExecutorHibernate<User> {
 

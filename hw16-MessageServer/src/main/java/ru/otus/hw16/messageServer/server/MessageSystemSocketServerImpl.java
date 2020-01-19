@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.otus.hw16.messageServer.messagesystem.MessageSystem;
 import ru.otus.message.Message;
 
@@ -12,16 +12,18 @@ import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-@Component
-public class MessageSystemServer {
-    private static Logger logger = LoggerFactory.getLogger(MessageSystemServer.class);
+@Service
+public class MessageSystemSocketServerImpl implements MessageSystemSocketServer{
+    private static Logger logger = LoggerFactory.getLogger(MessageSystemSocketServerImpl.class);
 
-    @Value("${messageserver.port}")
+    @Value("${message-server.port}")
     private int messageServerPort;
 
     @Autowired
     private MessageSystem messageSystem;
 
+    /** {@inheritDoc} */
+    @Override
     public void startServer() {
         try (ServerSocket serverSocket = new ServerSocket(messageServerPort)) {
             logger.info("Starting MessageServer on port: {}", messageServerPort);

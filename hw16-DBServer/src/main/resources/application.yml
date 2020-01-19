@@ -1,10 +1,10 @@
-MessageSystem:
-  ClientName:
+message-system:
+  client-name:
     DBService : databaseService
 
-MessageServer:
-  Port: 8087
-  Host: localhost
+message-server:
+  port: 8087
+  host: localhost
 
-DBServer:
-  Port: 8086
+DB-server:
+  port: 8086

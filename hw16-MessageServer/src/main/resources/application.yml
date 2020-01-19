@@ -1,13 +1,13 @@
-messageserver:
+message-server:
   port: 8087
   host: localhost
 
-dbserver:
+db-server:
   name: databaseService
   port: 8086
   host: localhost
 
-frontendserver:
+frontend-server:
   name: frontendService
   port: 8088
   host: localhost

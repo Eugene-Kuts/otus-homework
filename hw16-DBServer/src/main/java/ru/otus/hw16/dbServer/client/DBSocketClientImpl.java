@@ -1,7 +1,8 @@
-package ru.otus.hw16.messageServer.client;
+package ru.otus.hw16.dbServer.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.otus.message.Message;
 
@@ -10,18 +11,24 @@ import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class MessageSystemClient {
+public class DBSocketClientImpl implements DBSocketClient{
 
-    private static Logger logger = LoggerFactory.getLogger(MessageSystemClient.class);
+    private static Logger logger = LoggerFactory.getLogger(DBSocketClientImpl.class);
 
-    public void sendMessage(Message message, String clientHost, int clientPort) {
-        try (Socket clientSocket = new Socket(clientHost, clientPort);
+    @Value("${message-server.host}")
+    private String host;
+    @Value("${message-server.port}")
+    private int port;
+
+    /** {@inheritDoc} */
+    @Override
+    public void sendMessage(Message message) {
+        try (Socket clientSocket = new Socket(host, port);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream())) {
             objectOutputStream.writeObject(message);
-            logger.info("Message with ID [{}] is send to {} on host {} and port {}", message.getId(), message.getTo(), clientHost, clientPort);
             sleep();
         } catch (Exception ex) {
-            logger.error("Exception", ex);
+            logger.error("Ошибка:", ex);
         }
     }
 

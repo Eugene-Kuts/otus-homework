@@ -2,8 +2,8 @@ package ru.otus.hw16.dbServer.messagesystem;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.otus.hw16.dbServer.client.DBSocketClient;
 import ru.otus.hw16.dbServer.messagesystem.common.Serializers;
-import ru.otus.hw16.dbServer.client.DBClient;
 import ru.otus.message.Message;
 
 import java.util.Map;
@@ -14,16 +14,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DBServerMsClientImpl implements MsClient {
     private static final Logger logger = LoggerFactory.getLogger(DBServerMsClientImpl.class);
 
-
     private final String name;
 
     private final Map<String, RequestHandler> handlers = new ConcurrentHashMap<>();
 
-    private DBClient dbClient;
+    private final DBSocketClient dbSocketClient;
 
-    public DBServerMsClientImpl(String msClientName, DBClient socketClientDBServer) {
-        this.name = msClientName;
-        this.dbClient = socketClientDBServer;
+    public DBServerMsClientImpl(String name, DBSocketClient socketClientDBServer) {
+        this.name = name;
+        this.dbSocketClient = socketClientDBServer;
     }
 
 
@@ -40,7 +39,7 @@ public class DBServerMsClientImpl implements MsClient {
 
     @Override
     public boolean sendMessage(Message msg) {
-        dbClient.sendMessage(msg);
+        dbSocketClient.sendMessage(msg);
 
         return true;
     }
@@ -73,13 +72,12 @@ public class DBServerMsClientImpl implements MsClient {
         DBServerMsClientImpl that = (DBServerMsClientImpl) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(handlers, that.handlers) &&
-                Objects.equals(dbClient, that.dbClient);
+                Objects.equals(dbSocketClient, that.dbSocketClient);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, handlers, dbClient);
+        return Objects.hash(name, handlers, dbSocketClient);
     }
-
 
 }

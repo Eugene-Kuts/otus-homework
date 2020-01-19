@@ -2,7 +2,8 @@ package ru.otus.hw16.messageServer.messagesystem;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.otus.hw16.messageServer.client.MessageSystemClient;
+import ru.otus.hw16.messageServer.client.MessageSystemSocketClient;
+import ru.otus.hw16.messageServer.client.MessageSystemSocketClientImpl;
 import ru.otus.hw16.messageServer.messagesystem.common.Serializers;
 import ru.otus.message.Message;
 
@@ -21,11 +22,11 @@ public class MsClientImpl implements MsClient {
 
     private String host;
     private int port;
-    private MessageSystemClient messageSystemClient;
+    private MessageSystemSocketClient messageSystemSocketClient;
 
     public MsClientImpl(MessageSystem messageSystem) {
         this.messageSystem = messageSystem;
-        this.messageSystemClient = new MessageSystemClient();
+        this.messageSystemSocketClient = new MessageSystemSocketClientImpl();
     }
 
     @Override
@@ -50,7 +51,7 @@ public class MsClientImpl implements MsClient {
     @Override
     public void handle(Message msg) {
         logger.info("new message:{}", msg);
-        messageSystemClient.sendMessage(msg, host, port);
+        messageSystemSocketClient.sendMessage(msg, host, port);
     }
 
     @Override

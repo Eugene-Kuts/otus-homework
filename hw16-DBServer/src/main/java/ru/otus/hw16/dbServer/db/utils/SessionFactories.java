@@ -8,13 +8,17 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import ru.otus.hw16.dbServer.db.domain.User;
 
+@Component
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SessionFactories {
 
     private static final String CONFIG_FILE_PATH = "hibernate.cfg.xml";
 
+    @Bean
     public static SessionFactory get() {
         final Configuration configuration = new Configuration().configure(CONFIG_FILE_PATH);
 

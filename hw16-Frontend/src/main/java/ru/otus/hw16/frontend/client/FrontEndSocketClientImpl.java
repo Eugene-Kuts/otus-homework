@@ -11,15 +11,19 @@ import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class MessageSystemClient {
-    private static Logger logger = LoggerFactory.getLogger(MessageSystemClient.class);
+public class FrontEndSocketClientImpl implements FrontEndSocketClient{
+    private static Logger logger = LoggerFactory.getLogger(FrontEndSocketClientImpl.class);
 
-    @Value("${messageserver.port}")
+    /** Порт Системы обмена сообщенями */
+    @Value("${message-server.port}")
     private int messageServerPort;
-    @Value("${messageserver.host}")
+
+    /** Имя хоста Системы обмена сообщенями */
+    @Value("${message-server.host}")
     private String messageServerHost;
 
-
+    /** {@inheritDoc} */
+    @Override
     public void sendMessage(Message message) {
         try {
             try (Socket clientSocket = new Socket(messageServerHost, messageServerPort);

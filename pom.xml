@@ -36,6 +36,7 @@
         <module>hw16-MessageServer</module>
         <module>hw16-Frontend</module>
         <module>hw16-DBServer</module>
+        <module>prj-BackEndApp</module>
     </modules>
 
     <dependencies>
