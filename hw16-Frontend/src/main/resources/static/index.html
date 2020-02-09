@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HW15-MessageSystem</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div class="container">
+    <h3>Создать нового пользователя</h3>
+    <hr>
+    <form action="#" accept-charset="UTF-8">
+        <input id="name" type="text"
+               class="form-control mb-4 col-4" placeholder="Имя">
+        <input id="age" type="number"
+               class="form-control mb-4 col-4" placeholder="Возраст">
+        <input id="address" type="text"
+               class="form-control mb-4 col-4" placeholder="Адрес">
+        <input id="phone" type="text"
+               class="form-control mb-4 col-4" placeholder="Телефон">
+        <button onclick="saveUser();" class="btn btn-info col-2">Создать</button>
+    </form>
+    <hr>
+    <h3>Список пользователей</h3>
+    <table class="table table-bordered table-striped" id="usersListTable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Возраст</th>
+            <th>Адрес</th>
+            <th>Телефон</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>
