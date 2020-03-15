@@ -202,7 +202,7 @@
         <javassist.vesrsion>3.25.0-GA</javassist.vesrsion>
         <h2database.version>1.4.200</h2database.version>
         <hibernate-core.version>5.4.7.Final</hibernate-core.version>
-        <org.springframework.version>5.2.1.RELEASE</org.springframework.version>
+        <org.springframework.version>5.2.4.RELEASE</org.springframework.version>
         <jstl.version>1.2</jstl.version>
         <javaee-api.version>7.0</javaee-api.version>
         <!--endregion-->

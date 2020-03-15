@@ -16,7 +16,7 @@
     <properties>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <org.thymeleaf.version>3.0.11.RELEASE</org.thymeleaf.version>
-        <org.spring.mvc.version>5.2.1.RELEASE</org.spring.mvc.version>
+        <org.spring.mvc.version>5.2.4.RELEASE</org.spring.mvc.version>
     </properties>
 
     <dependencies>
