@@ -1,2 +1,19 @@
 server:
   port: 8081
+
+
+swagger:
+  apiVerion : 1.0
+  enabled : true
+  title : Microservice for multiplication of tree parameters
+  description : Microservice for multiplication of tree parameters
+  useDefaultResponseMessages : false
+  enableUrlTemplating : false
+  deepLinking : true
+  defaultModelsExpandDepth : 1
+  defaultModelExpandDepth : 1
+  displayOperationId : true
+  displayRequestDuration : true
+  filter : false
+  maxDisplayedTags : 0
+  showExtensions : true
